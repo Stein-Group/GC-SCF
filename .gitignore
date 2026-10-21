@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Configs and results (regenerate with the paper scripts)
+paper/**/configs/
+paper/**/results/
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Not published (kept locally)
+paper/water/write_convergence_table.py
