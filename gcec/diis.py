@@ -42,7 +42,11 @@ def herm_real(A, *, name="matrix", strict=False):
     herm_dev = float(np.max(np.abs(A - A.conj().T)))
     imag_max = float(np.max(np.abs(A.imag))) if np.iscomplexobj(A) else 0.0
 
-    if herm_dev < 1e-8 and imag_max < 1e-10:
+    # tolerances relative to the largest element: in basis sets with nearly
+    # linearly dependent functions (e.g. def2-TZVP on dense H chains) the
+    # density matrix has large, mutually cancelling elements
+    scale = max(1.0, float(np.max(np.abs(A))))
+    if herm_dev < 1e-8 * scale and imag_max < 1e-10 * scale:
         return A.real
 
     msg = (f"Non-real-Hermitian {name} (max |A - A^H| = {herm_dev:.3e}, "

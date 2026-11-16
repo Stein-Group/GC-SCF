@@ -18,4 +18,8 @@ paper/**/results/
 *.swp
 
 # Not published (kept locally)
-paper/water/write_convergence_table.py
+paper/water/write_convergence_table.pypaper/*/results/
+paper/*/figures/
+paper/*/configs/
+paper/*/log_*.log
+paper/*/run*.log
